@@ -14,7 +14,7 @@ object ApiHelper {
         client.basePath = "http://fal-1.upcode-dev.at:8001/api"
 //        client.authentications.put("API-KEY", ApiKeyAuth())
 //        client.setApiKeyPrefix("X-")
-//        client.setApiKey("O31eeBHlA1aaTNFwge7ns0qqxOc38HKk5Qz4_f2qqUI")
+//        client.setApiKey("????????")
         api = BuildingsApi(client)
     }
 
