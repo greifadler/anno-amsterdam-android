@@ -1,0 +1,439 @@
+---
+swagger: '2.0'
+info:
+  title: Anno Amsterdam CoreAPI
+  description: The internal API for the Anno Amsterdam project's CMS
+  termsOfService: https://anno.amsterdam/terms/
+  contact:
+    email: preis@computer.org
+  license:
+    name: MIT
+  version: v1
+host: fal-1.upcode-dev.at:8001
+schemes:
+  - http
+basePath: "/api"
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  Basic:
+    type: basic
+security:
+  - Basic: []
+paths:
+  "/audioguides/":
+    get:
+      operationId: audioguides_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Audioguide"
+      tags:
+        - audioguides
+    post:
+      operationId: audioguides_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            "$ref": "#/definitions/Audioguide"
+      responses:
+        '201':
+          description: ''
+          schema:
+            "$ref": "#/definitions/Audioguide"
+      tags:
+        - audioguides
+    parameters: []
+  "/audioguides/{id}/":
+    get:
+      operationId: audioguides_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            "$ref": "#/definitions/Audioguide"
+      tags:
+        - audioguides
+    put:
+      operationId: audioguides_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            "$ref": "#/definitions/Audioguide"
+      responses:
+        '200':
+          description: ''
+          schema:
+            "$ref": "#/definitions/Audioguide"
+      tags:
+        - audioguides
+    patch:
+      operationId: audioguides_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            "$ref": "#/definitions/Audioguide"
+      responses:
+        '200':
+          description: ''
+          schema:
+            "$ref": "#/definitions/Audioguide"
+      tags:
+        - audioguides
+    delete:
+      operationId: audioguides_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - audioguides
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+  "/buildings/":
+    get:
+      operationId: buildings_list
+      description: A simple ViewSet for viewing and editing buildings.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Building"
+      tags:
+        - buildings
+    post:
+      operationId: buildings_create
+      description: A simple ViewSet for viewing and editing buildings.
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            "$ref": "#/definitions/Building"
+      responses:
+        '201':
+          description: ''
+          schema:
+            "$ref": "#/definitions/Building"
+      tags:
+        - buildings
+    parameters: []
+  "/buildings/save_selected/":
+    post:
+      operationId: buildings_save_selected_create
+      description: ''
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - buildings
+    parameters: []
+  "/buildings/search/":
+    get:
+      operationId: buildings_search_list
+      description: API endpoint that allows users to search for buildings by address.
+      parameters:
+        - name: address
+          in: query
+          description: Partial or full address to search for
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+        - buildings
+    parameters: []
+  "/buildings/slim/":
+    get:
+      operationId: buildings_slim_list
+      description: ''
+      parameters:
+        - name: lat
+          in: query
+          description: Latitude of the location.
+          required: false
+          type: number
+        - name: lon
+          in: query
+          description: Longitude of the location
+          required: false
+          type: number
+        - name: century
+          in: query
+          description: Century of the building's construction (e.g., 20 for 20th Century).
+          required: false
+          type: integer
+        - name: address_or_name
+          in: query
+          description: Partial or full address or name of the
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Building"
+      tags:
+        - buildings
+    parameters: []
+  "/buildings/year/{year}/":
+    get:
+      operationId: buildings_year_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Building"
+      tags:
+        - buildings
+    parameters:
+      - name: year
+        in: path
+        required: true
+        type: string
+  "/buildings/{id}/":
+    get:
+      operationId: buildings_read
+      description: A simple ViewSet for viewing and editing buildings.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            "$ref": "#/definitions/Building"
+      tags:
+        - buildings
+    put:
+      operationId: buildings_update
+      description: A simple ViewSet for viewing and editing buildings.
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            "$ref": "#/definitions/Building"
+      responses:
+        '200':
+          description: ''
+          schema:
+            "$ref": "#/definitions/Building"
+      tags:
+        - buildings
+    patch:
+      operationId: buildings_partial_update
+      description: A simple ViewSet for viewing and editing buildings.
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            "$ref": "#/definitions/Building"
+      responses:
+        '200':
+          description: ''
+          schema:
+            "$ref": "#/definitions/Building"
+      tags:
+        - buildings
+    delete:
+      operationId: buildings_delete
+      description: A simple ViewSet for viewing and editing buildings.
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - buildings
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+definitions:
+  Audioguide:
+    required:
+      - title
+      - audio_url
+      - description
+    type: object
+    properties:
+      _id:
+        title: id
+        type: string
+      created_at:
+        title: Created at
+        description: The date and time this record was created. Automatically set
+          upon creation.
+        type: string
+        format: date-time
+        readOnly: true
+      updated_at:
+        title: Updated at
+        description: The date and time this record was last updated. Automatically
+          updated on save.
+        type: string
+        format: date-time
+        readOnly: true
+      title:
+        title: Title
+        description: Title of the audioguide.
+        type: string
+        maxLength: 255
+        minLength: 1
+      audio_url:
+        title: Audio url
+        description: URL to the audio file stored in Azure Blob Storage.
+        type: string
+        format: uri
+        maxLength: 200
+        minLength: 1
+      description:
+        title: Description
+        description: Detailed description of the audioguide.
+        type: string
+        minLength: 1
+  Building:
+    required:
+      - location
+      - main_image_url
+      - address
+      - construction_year
+      - type_of_use
+      - id
+    type: object
+    properties:
+      _id:
+        title: id
+        type: string
+      location:
+        title: Location
+        type: object
+        properties:
+          type:
+            type: string
+          coordinates:
+            type: array
+            items:
+              type: number
+      created_at:
+        title: Created at
+        description: The date and time this record was created. Automatically set
+          upon creation.
+        type: string
+        format: date-time
+        readOnly: true
+      updated_at:
+        title: Updated at
+        description: The date and time this record was last updated. Automatically
+          updated on save.
+        type: string
+        format: date-time
+        readOnly: true
+      main_image_url:
+        title: Preview image url
+        description: URL to a preview image of the building.
+        type: string
+        maxLength: 1024
+        minLength: 1
+      address:
+        title: Address
+        description: Physical address of the building.
+        type: string
+        maxLength: 255
+        minLength: 1
+      name:
+        title: Name
+        description: Alternative name instead of the address of the building.
+        type: string
+        maxLength: 255
+        minLength: 1
+      construction_year:
+        title: Construction year
+        description: Year when the building was constructed.
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+      type_of_use:
+        title: Type of use
+        description: The intended use of the building (e.g., residential, commercial).
+        type: string
+        maxLength: 100
+        minLength: 1
+      tags:
+        title: Tags
+        description: JSON-formatted list of tags related to the building.
+        type: array
+        items:
+          type: string
+      description:
+        title: Description
+        description: Detailed description of the building.
+        type: string
+        minLength: 1
+      image_urls:
+        title: Image urls
+        description: JSON-formatted list of objects with URLs to images of the building and their sources.
+        type: array
+        items:
+          type: object
+          properties:
+            url:
+              type: string
+              description: URL of the image.
+            source:
+              type: string
+              description: Source of the image.
+      timeline:
+        title: Timeline
+        description: JSON-formatted data representing key events in the building's history.
+        type: array
+        items:
+          type: object
+          properties:
+            year:
+              type: integer
+              description: The year when the event occurred.
+            description:
+              type: string
+              description: Description of the event.
+
+      active:
+        title: Active
+        description: Indicates whether the building is active or not.
+        type: boolean
+      audioguides:
+        title: Audioguides
+        description: JSON-formatted list of audioguides.
+        type: object

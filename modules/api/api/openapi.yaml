@@ -1,0 +1,565 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: preis@computer.org
+  description: The internal API for the Anno Amsterdam project's CMS
+  license:
+    name: MIT
+  termsOfService: https://anno.amsterdam/terms/
+  title: Anno Amsterdam CoreAPI
+  version: v1
+servers:
+- url: http://fal-1.upcode-dev.at:8001/api
+security:
+- Basic: []
+paths:
+  /audioguides/:
+    get:
+      operationId: audioguides_list
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Audioguide'
+                type: array
+          description: ""
+      tags:
+      - audioguides
+      x-accepts: application/json
+    post:
+      operationId: audioguides_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Audioguide'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Audioguide'
+          description: ""
+      tags:
+      - audioguides
+      x-codegen-request-body-name: data
+      x-contentType: application/json
+      x-accepts: application/json
+  /audioguides/{id}/:
+    delete:
+      operationId: audioguides_delete
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: ""
+      tags:
+      - audioguides
+      x-accepts: application/json
+    get:
+      operationId: audioguides_read
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Audioguide'
+          description: ""
+      tags:
+      - audioguides
+      x-accepts: application/json
+    patch:
+      operationId: audioguides_partial_update
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Audioguide'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Audioguide'
+          description: ""
+      tags:
+      - audioguides
+      x-codegen-request-body-name: data
+      x-contentType: application/json
+      x-accepts: application/json
+    put:
+      operationId: audioguides_update
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Audioguide'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Audioguide'
+          description: ""
+      tags:
+      - audioguides
+      x-codegen-request-body-name: data
+      x-contentType: application/json
+      x-accepts: application/json
+  /buildings/:
+    get:
+      description: A simple ViewSet for viewing and editing buildings.
+      operationId: buildings_list
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Building'
+                type: array
+          description: ""
+      tags:
+      - buildings
+      x-accepts: application/json
+    post:
+      description: A simple ViewSet for viewing and editing buildings.
+      operationId: buildings_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Building'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Building'
+          description: ""
+      tags:
+      - buildings
+      x-codegen-request-body-name: data
+      x-contentType: application/json
+      x-accepts: application/json
+  /buildings/save_selected/:
+    post:
+      operationId: buildings_save_selected_create
+      responses:
+        "201":
+          content: {}
+          description: ""
+      tags:
+      - buildings
+      x-accepts: application/json
+  /buildings/search/:
+    get:
+      description: API endpoint that allows users to search for buildings by address.
+      operationId: buildings_search_list
+      parameters:
+      - description: Partial or full address to search for
+        in: query
+        name: address
+        schema:
+          type: string
+      responses:
+        "200":
+          content: {}
+          description: ""
+      tags:
+      - buildings
+      x-accepts: application/json
+  /buildings/slim/:
+    get:
+      operationId: buildings_slim_list
+      parameters:
+      - description: Latitude of the location.
+        in: query
+        name: lat
+        schema:
+          type: number
+      - description: Longitude of the location
+        in: query
+        name: lon
+        schema:
+          type: number
+      - description: "Century of the building's construction (e.g., 20 for 20th Century)."
+        in: query
+        name: century
+        schema:
+          type: integer
+      - description: Partial or full address or name of the
+        in: query
+        name: address_or_name
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Building'
+                type: array
+          description: ""
+      tags:
+      - buildings
+      x-accepts: application/json
+  /buildings/year/{year}/:
+    get:
+      operationId: buildings_year_read
+      parameters:
+      - in: path
+        name: year
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Building'
+                type: array
+          description: ""
+      tags:
+      - buildings
+      x-accepts: application/json
+  /buildings/{id}/:
+    delete:
+      description: A simple ViewSet for viewing and editing buildings.
+      operationId: buildings_delete
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: ""
+      tags:
+      - buildings
+      x-accepts: application/json
+    get:
+      description: A simple ViewSet for viewing and editing buildings.
+      operationId: buildings_read
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Building'
+          description: ""
+      tags:
+      - buildings
+      x-accepts: application/json
+    patch:
+      description: A simple ViewSet for viewing and editing buildings.
+      operationId: buildings_partial_update
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Building'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Building'
+          description: ""
+      tags:
+      - buildings
+      x-codegen-request-body-name: data
+      x-contentType: application/json
+      x-accepts: application/json
+    put:
+      description: A simple ViewSet for viewing and editing buildings.
+      operationId: buildings_update
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Building'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Building'
+          description: ""
+      tags:
+      - buildings
+      x-codegen-request-body-name: data
+      x-contentType: application/json
+      x-accepts: application/json
+components:
+  schemas:
+    Audioguide:
+      example:
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        created_at: 2000-01-23T04:56:07.000+00:00
+        description: description
+        audio_url: https://openapi-generator.tech
+        _id: _id
+        title: title
+      properties:
+        _id:
+          title: id
+          type: string
+        created_at:
+          description: The date and time this record was created. Automatically set
+            upon creation.
+          format: date-time
+          readOnly: true
+          title: Created at
+          type: string
+        updated_at:
+          description: The date and time this record was last updated. Automatically
+            updated on save.
+          format: date-time
+          readOnly: true
+          title: Updated at
+          type: string
+        title:
+          description: Title of the audioguide.
+          maxLength: 255
+          minLength: 1
+          title: Title
+          type: string
+        audio_url:
+          description: URL to the audio file stored in Azure Blob Storage.
+          format: uri
+          maxLength: 200
+          minLength: 1
+          title: Audio url
+          type: string
+        description:
+          description: Detailed description of the audioguide.
+          minLength: 1
+          title: Description
+          type: string
+      required:
+      - audio_url
+      - description
+      - title
+      type: object
+    Building:
+      example:
+        main_image_url: main_image_url
+        address: address
+        audioguides: "{}"
+        type_of_use: type_of_use
+        created_at: 2000-01-23T04:56:07.000+00:00
+        description: description
+        image_urls:
+        - source: source
+          url: url
+        - source: source
+          url: url
+        active: true
+        tags:
+        - tags
+        - tags
+        construction_year: 441289069
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        name: name
+        timeline:
+        - year: 1
+          description: description
+        - year: 1
+          description: description
+        location:
+          coordinates:
+          - 0.8008281904610115
+          - 0.8008281904610115
+          type: type
+        _id: _id
+      properties:
+        _id:
+          title: id
+          type: string
+        location:
+          $ref: '#/components/schemas/Location'
+        created_at:
+          description: The date and time this record was created. Automatically set
+            upon creation.
+          format: date-time
+          readOnly: true
+          title: Created at
+          type: string
+        updated_at:
+          description: The date and time this record was last updated. Automatically
+            updated on save.
+          format: date-time
+          readOnly: true
+          title: Updated at
+          type: string
+        main_image_url:
+          description: URL to a preview image of the building.
+          maxLength: 1024
+          minLength: 1
+          title: Preview image url
+          type: string
+        address:
+          description: Physical address of the building.
+          maxLength: 255
+          minLength: 1
+          title: Address
+          type: string
+        name:
+          description: Alternative name instead of the address of the building.
+          maxLength: 255
+          minLength: 1
+          title: Name
+          type: string
+        construction_year:
+          description: Year when the building was constructed.
+          maximum: 2147483647
+          minimum: -2147483648
+          title: Construction year
+          type: integer
+        type_of_use:
+          description: "The intended use of the building (e.g., residential, commercial)."
+          maxLength: 100
+          minLength: 1
+          title: Type of use
+          type: string
+        tags:
+          description: JSON-formatted list of tags related to the building.
+          items:
+            type: string
+          title: Tags
+          type: array
+        description:
+          description: Detailed description of the building.
+          minLength: 1
+          title: Description
+          type: string
+        image_urls:
+          description: JSON-formatted list of objects with URLs to images of the building
+            and their sources.
+          items:
+            $ref: '#/components/schemas/Building_image_urls'
+          title: Image urls
+          type: array
+        timeline:
+          description: JSON-formatted data representing key events in the building's
+            history.
+          items:
+            $ref: '#/components/schemas/Building_timeline'
+          title: Timeline
+          type: array
+        active:
+          description: Indicates whether the building is active or not.
+          title: Active
+          type: boolean
+        audioguides:
+          description: JSON-formatted list of audioguides.
+          properties: {}
+          title: Audioguides
+          type: object
+      required:
+      - address
+      - construction_year
+      - location
+      - main_image_url
+      - type_of_use
+      type: object
+    Location:
+      example:
+        coordinates:
+        - 0.8008281904610115
+        - 0.8008281904610115
+        type: type
+      properties:
+        type:
+          type: string
+        coordinates:
+          items:
+            type: number
+          type: array
+      title: Location
+      type: object
+    Building_image_urls:
+      example:
+        source: source
+        url: url
+      properties:
+        url:
+          description: URL of the image.
+          type: string
+        source:
+          description: Source of the image.
+          type: string
+      type: object
+    Building_timeline:
+      example:
+        year: 1
+        description: description
+      properties:
+        year:
+          description: The year when the event occurred.
+          type: integer
+        description:
+          description: Description of the event.
+          type: string
+      type: object
+  securitySchemes:
+    Basic:
+      scheme: basic
+      type: http
+x-original-swagger-version: "2.0"
+

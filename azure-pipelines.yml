@@ -1,0 +1,32 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  javaVersion: '17'
+  gradleCachePath: '$(Pipeline.Workspace)/.gradle'
+
+steps:
+- script: |
+    sudo apt-get update
+    sudo apt-get install -y openjdk-$(javaVersion)-jdk
+    export JAVA_HOME=/usr/lib/jvm/java-$(javaVersion)-openjdk-amd64  # Explicitly set JAVA_HOME
+    export PATH=$JAVA_HOME/bin:$PATH
+    echo "JAVA_HOME is set to $JAVA_HOME"
+    java -version  # Verify Java version
+    ./gradlew assembleDebug -Dorg.gradle.java.home=$JAVA_HOME
+  displayName: 'Install Java 17 and Build Android Application'
+
+- task: Cache@2
+  inputs:
+    key: 'gradle | "$(Agent.OS)" | **/build.gradle.kts, **/*.gradle'
+    restoreKeys: |
+      gradle | "$(Agent.OS)"
+      gradle
+    path: $(gradleCachePath)
+  displayName: 'Cache Gradle dependencies'
+
+- publish: app/build/outputs/apk/debug/app-debug.apk
+  artifact: app-debug.apk

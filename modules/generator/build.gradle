@@ -1,0 +1,62 @@
+group 'org.openapitools'
+version '1.0.0'
+
+
+buildscript {
+    ext.kotlin_version = '1.6.21'
+
+    repositories {
+        maven { url "https://repo1.maven.org/maven2" }
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: 'kotlin'
+apply plugin: 'org.openapi.generator'
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    implementation "com.squareup.moshi:moshi-kotlin:1.12.0"
+    implementation "com.squareup.moshi:moshi-adapters:1.12.0"
+    implementation "com.squareup.okhttp3:okhttp:4.9.1"
+    testImplementation "io.kotlintest:kotlintest-runner-junit5:3.4.2"
+    implementation("org.openapitools:openapi-generator-cli:5.3.1")
+
+    // CameraX core libraries
+    implementation "androidx.camera:camera-camera2:1.x.x"
+    implementation "androidx.camera:camera-lifecycle:1.x.x"
+    implementation "androidx.camera:camera-view:1.x.x"
+
+    // Accompanist for Permissions
+    implementation "com.google.accompanist:accompanist-permissions:<latest_version>"
+
+}
+
+
+openApiGenerate {
+    generatorName.set("java")
+    inputSpec.set("$projectDir/swagger.yaml") // Path to your swagger.yaml file
+    outputDir.set("$projectDir/../api")
+    apiPackage.set("nl.anno.amsterdam.api")
+    modelPackage.set("nl.anno.amsterdam.model")
+//    configOptions.set(mapOf(
+//            "dateLibrary": "java8",
+//            "serializationLibrary": "gson",
+//            "java8": "true"
+//    ))
+
+//    val options = mutableMapOf<String, String>()
+//    options["dateLibrary"] = "java8"
+//    options["serializationLibrary"] = "gson"
+//    options["java8"] = "true"
+//
+//    configOptions.set(options)
+
+}

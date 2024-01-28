@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Anno Amsterdam</string>
+    <string name="map">Kaart</string>
+    <string name="list">Lijst</string>
+    <string name="lens">Lens</string>
+    <string name="account">account</string>
+    <string name="details">details</string>
+    <string name="main_img_alt">Hoofdafbeelding van dit gebouw</string>
+    <string name="details_timeline_title">TIJDLIJN</string>
+    <string name="building_not_found">Gebouw werd niet gevonden.</string>
+    <string name="search_by_address">Zoeken op adres</string>
+    <string name="skip">overslaan</string>
+    <string name="next">volgende</string>
+    <string name="distance_to">Afstand tot</string>
+    <string name="more_information">Meer informatie</string>
+    <string name="close">Sluit</string>
+    <string name="search">Zoek op</string>
+    <string name="clear">Duidelijk</string>
+    <string name="close_2">Sluit</string>
+    <string name="distance_to_2">Afstand tot</string>
+    <string name="type_of_use">Type gebruik</string>
+    <string name="back">TERUG</string>
+    <string name="request_permission">Toestemming vragen</string>
+    <string name="your_location_is_important_for_this_app_please_grant_the_permission">Je locatie is belangrijk voor deze app. Geef toestemming.</string>
+    <string name="your_location_is_required_for_this_feature_to_be_available">"Je locatie is vereist om deze functie beschikbaar te maken. "</string>
+    <string name="get_lost_in_history_navigate_amsterdam_s_iconic_buildings_on_the_map">Verdwaal in de geschiedenis</string>
+    <string name="skip_2">SKIP</string>
+    <string name="next_2">Iconische gebouwen op de kaart</string>
+    <string name="unlock_the_building_s_secrets_explore_detailed_information">"Onthul de geheimen van het gebouw "</string>
+    <string name="skip_3">SKIP</string>
+    <string name="get_started">STARTEN</string>
+</resources>
