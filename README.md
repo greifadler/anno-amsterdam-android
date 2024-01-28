@@ -11,7 +11,7 @@ A mobile application for the residents & tourists of Amsterdam to discover and l
       <em>Map page of historical buildings</em>
     </td>
     <td align="center" width="33%">
-      <img src="demo_images/ar.jpeg" alt="Map marker preview page" width="200"><br>
+      <img src="demo_images/marker.jpeg" alt="Map marker preview page" width="200"><br>
       <em>Buidling preview of an marker</em>
     </td>
     <td align="center" width="33%">
