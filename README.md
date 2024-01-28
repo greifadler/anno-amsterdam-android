@@ -7,15 +7,15 @@ A mobile application for the residents & tourists of Amsterdam to discover and l
 <table>
   <tr>
     <td align="center" width="33%">
-      <img src="demo_images/map.jpeg" alt="Map Page" width="200"><br>
+      <img src="demo_images/map.jpeg" alt="Map page" width="200"><br>
       <em>Map page of historical buildings</em>
     </td>
     <td align="center" width="33%">
-      <img src="demo_images/ar.jpeg" alt="AR Page" width="200"><br>
+      <img src="demo_images/ar.jpeg" alt="Map marker preview page" width="200"><br>
       <em>Buidling preview of an marker</em>
     </td>
     <td align="center" width="33%">
-      <img src="demo_images/list.jpeg" alt="List Page" width="200"><br>
+      <img src="demo_images/list.jpeg" alt="List page" width="200"><br>
       <em>List page of historical buildings</em>
     </td>
   </tr>
@@ -25,11 +25,11 @@ A mobile application for the residents & tourists of Amsterdam to discover and l
       <em>Search results at the list page</em>
     </td>
     <td align="center" width="33%">
-      <img src="demo_images/details.jpeg" alt="Details Page" width="200"><br>
+      <img src="demo_images/details.jpeg" alt="Details page" width="200"><br>
       <em>Details page</em>
     </td>
     <td align="center" width="33%">
-      <img src="demo_images/image.jpeg" alt="Image Page" width="200"><br>
+      <img src="demo_images/image.jpeg" alt="Image page" width="200"><br>
       <em>Image details page</em>
     </td>
   </tr>
